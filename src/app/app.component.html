@@ -1,0 +1,12 @@
+<div>
+  <app-navbar></app-navbar>
+  <div class="container">
+    <div class="sidebar">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="content" [ngStyle]="{'background-color': frameColor}">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <input type="color" [(ngModel)]="frameColor" class="color-picker">
+</div>
