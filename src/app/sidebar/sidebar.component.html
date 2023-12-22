@@ -1,0 +1,5 @@
+<div class="sidebar">
+  <div *ngFor="let item of items">
+    {{item.type}} : <div style="{{test}}" cdkDrag [innerHTML]="getHtml(item)"></div>
+  </div>
+</div>

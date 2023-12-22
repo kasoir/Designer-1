@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+  }
+  
+  .sidebar {
+    /* Adjust width as needed */
+    width: 20%;
+  }
+  
+  .content {
+    /* Adjust width as needed */
+    width: 80%;
+    border: 1px solid black;
+    min-height: 500px; /* This gives the div a default height */
+    background-color: white;
+  }
+  .color-picker {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    /* Add any additional styles as needed */
+  }
