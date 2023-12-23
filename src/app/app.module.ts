@@ -8,12 +8,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
+import { PredefinedElements } from './dummy-data';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

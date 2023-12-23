@@ -1,11 +1,14 @@
 <div>
   <app-navbar></app-navbar>
   <div class="container">
-    <div class="sidebar">
+    <div class="sidebar front">
       <app-sidebar></app-sidebar>
     </div>
-    <div class="content" [ngStyle]="{'background-color': frameColor}">
-      <router-outlet></router-outlet>
+    <div class="frame-container">
+      <div #frame class="content resizable movable" [ngStyle]="{'background-color': frameColor}">
+        <router-outlet></router-outlet>
+      </div>
+      <button class="lock-button" (click)="toggleLock()">{{isLocked ? 'Unlock Frame' : 'Lock Frame'}}</button>
     </div>
   </div>
   <input type="color" [(ngModel)]="frameColor" class="color-picker">
