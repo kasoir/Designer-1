@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { elements } from '../dummy-data';
+import { PredefinedElements, elements } from '../dummy-data';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -15,17 +15,29 @@ export class SidebarComponent implements OnInit {
   `
   public items: any;
   public text: SafeHtml = '';
+  private predefinedElements: PredefinedElements;
 
   constructor(private sanitizer: DomSanitizer) { 
     this.items = elements;
-    // this.text = this.sanitizer.bypassSecurityTrustHtml(this.items.text.code);
-    
+    this.predefinedElements = new PredefinedElements('text', 'input', 'Text Field', 'color: blue;','');
+    this.predefinedElements.setHTMLElement();
+    console.log(this.predefinedElements.getHTMLElement())
+    this.text = this.sanitizer.bypassSecurityTrustHtml(this.predefinedElements.getHTMLElement());
   }
   
   ngOnInit(): void {
   }
   
-  getHtml(item:any) {
-    return this.sanitizer.bypassSecurityTrustHtml(item.code);
+
+  addText() {
+    // Code to add text goes here
+  }
+
+  addButton() {
+    // Code to add a button goes here
+  }
+
+  addLable() {
+    // Code to add a button goes here
   }
 }

@@ -1,22 +1,56 @@
+
 .container {
     display: flex;
   }
   
   .sidebar {
     /* Adjust width as needed */
-    width: 20%;
+    width: 10%;
   }
   
   .content {
     /* Adjust width as needed */
-    width: 80%;
+    width: 90%;
     border: 1px solid black;
     min-height: 500px; /* This gives the div a default height */
     background-color: white;
   }
   .color-picker {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
-    /* Add any additional styles as needed */
+    bottom: 50px;
+    right: 50px;
+  }
+  .resizable {
+    resize: both;
+    overflow: auto;
+    width: 50%;
+    height: 50%;
+  }
+
+  .front {
+    position: absolute;
+      z-index: 10000;
+  }
+
+  .movable {
+    position: relative;
+    cursor: move;
+    z-index: 100; /* Adjust as needed */
+  }
+  
+  .frame-container {
+    position: relative; 
+    width: 80%;
+
+  }
+  
+  .lock-button {
+    position: absolute;
+    top: 110%;
+    right: 0%;
+    bottom: 20%;
+    left: 110%;
+    width: 5%;
+    border: none !important;
+    min-height: 10px;
   }

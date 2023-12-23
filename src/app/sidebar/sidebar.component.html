@@ -1,5 +1,12 @@
 <div class="sidebar">
   <div *ngFor="let item of items">
-    {{item.type}} : <div style="{{test}}" cdkDrag [innerHTML]="getHtml(item)"></div>
+    {{item.type}} : <div style="{{test}}" cdkDrag [innerHTML]="text"></div>
   </div>
+
+  <div>
+    <label (click)="addLable()" class="clickable-label">Add Lable</label>
+    <label (click)="addText()" class="clickable-label">Add Text</label>
+    <label (click)="addButton()" class="clickable-label">Add Button</label>
+  </div>
+
 </div>
