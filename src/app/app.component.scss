@@ -15,16 +15,11 @@
     min-height: 500px; /* This gives the div a default height */
     background-color: white;
   }
-  .color-picker {
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-  }
   .resizable {
     resize: both;
     overflow: auto;
-    width: 50%;
-    height: 50%;
+    width: 60%;
+    height: 60%;
   }
 
   .front {
@@ -35,7 +30,9 @@
   .movable {
     position: relative;
     cursor: move;
-    z-index: 100; /* Adjust as needed */
+    z-index: 100;
+    top: 20%;
+    left: 20%;
   }
   
   .frame-container {
@@ -45,12 +42,19 @@
   }
   
   .lock-button {
-    position: absolute;
-    top: 110%;
+    position: relative;
+    top: 30%;
     right: 0%;
-    bottom: 20%;
-    left: 110%;
-    width: 5%;
-    border: none !important;
-    min-height: 10px;
+    bottom: 10px;
+    left: 93%;
+    width: 10%;
+    min-height: 30px;
+  }
+
+  .color-picker {
+    position: relative;
+    top: 30%;
+    right: 0%;
+    bottom: 10px;
+    left: 93%;
   }
