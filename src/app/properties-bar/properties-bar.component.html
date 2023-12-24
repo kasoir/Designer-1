@@ -1,0 +1,10 @@
+<div>
+    <div class="gride" *ngIf="element && showSidebar">
+        <p>Tag name: {{element.tagName}}</p>
+        <p>Class name: {{element.className}}</p>
+        <label>Style: <input [(ngModel)]="style"></label>
+        <!-- Display other properties and controls as needed -->
+    </div>
+
+    <button (click)="toggleSidebar()">Hide Sidebar</button>
+</div>

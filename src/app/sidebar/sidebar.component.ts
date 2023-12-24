@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PredefinedElements, elements } from '../dummy-data';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { PredefinedElements } from '../dummy-data';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
@@ -9,35 +9,105 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class SidebarComponent implements OnInit {
 
-  test = ` color: black;
-    backgorund-color: gray;
-    cursor: move;
-  `
-  public items: any;
-  public text: SafeHtml = '';
-  private predefinedElements: PredefinedElements;
+  public items: SafeHtml[] = [];
 
-  constructor(private sanitizer: DomSanitizer) { 
-    this.items = elements;
-    this.predefinedElements = new PredefinedElements('text', 'input', 'Text Field', 'color: blue;','');
-    this.predefinedElements.setHTMLElement();
-    console.log(this.predefinedElements.getHTMLElement())
-    this.text = this.sanitizer.bypassSecurityTrustHtml(this.predefinedElements.getHTMLElement());
+  position = `
+    position: absolute;
+    top: 350px;
+    left: 400%;
+    cursor: move;
+    z-index: 1000;
+    border: 1px solid black;
+
+    `
+  constructor(private sanitizer: DomSanitizer, private cd: ChangeDetectorRef) {
   }
-  
+
   ngOnInit(): void {
   }
-  
-
   addText() {
-    // Code to add text goes here
+    const predefinedElements: PredefinedElements = new PredefinedElements({
+      tag: 'input',
+      label: 'New Text Field',
+      style: `${this.position}
+        color: blue;
+        height: 20px;
+        width: 100px;`
+    });
+    predefinedElements.setTextHTMLElement();
+    this.items.push(this.sanitizer.bypassSecurityTrustHtml(predefinedElements.getHTMLElement()));
+    this.cd.detectChanges();
   }
 
   addButton() {
-    // Code to add a button goes here
+    const predefinedElements: PredefinedElements = new PredefinedElements({
+      tag: 'button',
+      label: 'Button',
+      style: `${this.position}
+      background-color: #a15b8c;
+        color: #000000;
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;`,
+    });
+    predefinedElements.setLabelHTMLElement();
+    this.items.push(this.sanitizer.bypassSecurityTrustHtml(predefinedElements.getHTMLElement()));
+    this.cd.detectChanges();
   }
 
-  addLable() {
-    // Code to add a button goes here
+  addLabel() {
+    const predefinedElements: PredefinedElements = new PredefinedElements({
+      tag: 'label',
+      label: 'New Label',
+      style: `
+        ${this.position}
+          color: #000000;
+          height: 20px;
+          width: 100px;`,
+    });
+    predefinedElements.setLabelHTMLElement();
+    this.items.push(this.sanitizer.bypassSecurityTrustHtml(predefinedElements.getHTMLElement()));
+    this.cd.detectChanges();
+  }
+  addDropdown() {
+    const predefinedElements: PredefinedElements = new PredefinedElements({
+      tag: 'select',
+      label: 'Dropdown',
+      style: `
+      ${this.position}
+        color: #000000;
+        height: 30px;
+        width: 100px;`,
+      options: ['Option 1', 'Option 2', 'Option 3'],  // Add your options here
+    });
+    predefinedElements.setDropdownHTMLElement();
+    this.items.push(this.sanitizer.bypassSecurityTrustHtml(predefinedElements.getHTMLElement()));
+    this.cd.detectChanges();
+  }
+  addTable() {
+    const predefinedElements: PredefinedElements = new PredefinedElements({
+      tag: 'table',
+      label: 'Table',
+      style: `
+      ${this.position}
+        color: #000000;
+        height: 200px;
+        width: 400px;
+        `,
+      tableOptions: {
+        rows: 5,
+        columns: 3,
+        rowStyle: `border: 1px solid black;`
+      }
+    });
+    predefinedElements.setTableHTMLElement();
+    this.items.push(this.sanitizer.bypassSecurityTrustHtml(predefinedElements.getHTMLElement()));
+    this.cd.detectChanges();
+  }
+
+  selectedElement!: HTMLElement;
+
+  selectElement(event: MouseEvent) {
+    this.selectedElement = event.target as HTMLElement;
   }
 }

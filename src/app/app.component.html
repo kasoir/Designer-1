@@ -9,7 +9,7 @@
         <router-outlet></router-outlet>
       </div>
       <button class="lock-button" (click)="toggleLock()">{{isLocked ? 'Unlock Frame' : 'Lock Frame'}}</button>
+      <input type="color" [(ngModel)]="frameColor" class="color-picker">
     </div>
   </div>
-  <input type="color" [(ngModel)]="frameColor" class="color-picker">
 </div>

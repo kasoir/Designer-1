@@ -9,12 +9,14 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
 import { PredefinedElements } from './dummy-data';
+import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     SidebarComponent,
+    PropertiesBarComponent,
   ],
   imports: [
     BrowserModule,

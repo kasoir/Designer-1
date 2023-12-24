@@ -1,12 +1,16 @@
 <div class="sidebar">
-  <div *ngFor="let item of items">
-    {{item.type}} : <div style="{{test}}" cdkDrag [innerHTML]="text"></div>
-  </div>
-
+  
   <div>
-    <label (click)="addLable()" class="clickable-label">Add Lable</label>
+    <label (click)="addLabel()" class="clickable-label">Add Lable</label>
     <label (click)="addText()" class="clickable-label">Add Text</label>
     <label (click)="addButton()" class="clickable-label">Add Button</label>
+    <label (click)="addDropdown()" class="clickable-label">Add List</label>
+    <label (click)="addTable()" class="clickable-label">Add Table</label>
   </div>
 
+</div>  
+<div *ngFor="let item of items">
+    <div (click)="selectElement($event)" cdkDrag [innerHTML]="item"></div>
 </div>
+
+<app-properties-bar class="properties-bar" *ngIf="selectedElement" [element]="selectedElement"></app-properties-bar>

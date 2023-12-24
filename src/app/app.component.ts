@@ -45,4 +45,10 @@ export class AppComponent {
   toggleLock() {
     this.isLocked = !this.isLocked;
   }
+
+  selectedElement!: HTMLElement;
+
+  selectElement(event: MouseEvent) {
+    this.selectedElement = event.target as HTMLElement;
+  }
 }

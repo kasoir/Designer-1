@@ -1,19 +1,31 @@
 .sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgb(129, 167, 162);
-    color: white;
-    padding: 5%;
-    margin-top: 2.56%;
-  }
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgb(129, 167, 162);
+  color: white;
+  padding: 1%;
+  margin-top: 2.56%;
+  width: min-content;
+}
 
-  .clickable-label {
-    cursor: pointer;
-    display: inline-block;
-    margin: 10px;
-    padding: 10px;
-    /* Add any additional styles as needed */
-  }
-  
+.clickable-label {
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  /* Add any additional styles as needed */
+}
+
+.properties-bar {
+  position: fixed;
+  right: 0;
+  width: 200px;
+  height: 100%;
+  background-color: rgb(129, 167, 162);
+  color: white;
+  padding: 1%;
+  margin-top: 2.56%;
+  width: min-content; 
+}
