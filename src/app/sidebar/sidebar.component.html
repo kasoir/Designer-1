@@ -1,13 +1,7 @@
 <div class="sidebar">
-  
-  <div>
-    <label (click)="addLabel()" class="clickable-label">Add Lable</label>
-    <label (click)="addText()" class="clickable-label">Add Text</label>
-    <label (click)="addButton()" class="clickable-label">Add Button</label>
-    <label (click)="addDropdown()" class="clickable-label">Add List</label>
-    <label (click)="addTable()" class="clickable-label">Add Table</label>
-  </div>
-
+  <select (change)="handleSelect($event)">
+    <option *ngFor="let option of options" [value]="option.key">{{option.value}}</option>
+  </select>
 </div>  
 <div *ngFor="let item of items">
     <div (click)="selectElement($event)" cdkDrag [innerHTML]="item"></div>

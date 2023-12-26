@@ -1,8 +1,16 @@
 <div>
     <div class="gride" *ngIf="element && showSidebar">
         <p>Tag name: {{element.tagName}}</p>
-        <p>Class name: {{element.className}}</p>
-        <label>Style: <input [(ngModel)]="style"></label>
+        <label>font size: <input [(ngModel)]="fontSize" (change)="setStyle()"></label>
+        <label>border size: <input [(ngModel)]="borderSize" (change)="setStyle()"></label>
+        <label>border color: <input [(ngModel)]="borderColor" (change)="setStyle()"></label>
+        <label>border style: <input [(ngModel)]="borderStyle" (change)="setStyle()"></label>
+        <label>font color: <input [(ngModel)]="fontColor" (change)="setStyle()"></label>
+        <label>background color: <input [(ngModel)]="backgroundColor" (change)="setStyle()"></label>
+        <label>Position Type: <input [(ngModel)]="position" (change)="setStyle()"></label>
+        <label>Top: <input [(ngModel)]="top" (change)="setStyle()"></label>
+        <label>Left: <input [(ngModel)]="left" (change)="setStyle()"></label>
+        <label>transform: <input [(ngModel)]="transform" (change)="setStyle()"></label>
         <!-- Display other properties and controls as needed -->
     </div>
 
