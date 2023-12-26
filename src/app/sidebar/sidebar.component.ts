@@ -11,6 +11,15 @@ export class SidebarComponent implements OnInit {
 
   public items: SafeHtml[] = [];
 
+  selectedElement!: HTMLElement;
+
+  options = [
+    {key: 'addLabel' , value: 'Add Label'}, 
+    {key: 'addText' , value: 'Add Text'} , 
+    {key: 'addButton', value: 'Add Button'} ,
+    {key: 'addList', value: 'Add List'} , 
+    {key: 'addTable', value: 'Add Table'}];
+
   position = `
     position: absolute;
     top: 350px;
@@ -105,9 +114,28 @@ export class SidebarComponent implements OnInit {
     this.cd.detectChanges();
   }
 
-  selectedElement!: HTMLElement;
 
   selectElement(event: MouseEvent) {
     this.selectedElement = event.target as HTMLElement;
+  }
+
+  handleSelect(event: any) {
+    switch(event.target.value) {
+      case 'addLabel':
+        this.addLabel();
+        break;
+      case 'addText':
+        this.addText();
+        break;
+      case 'addButton':
+        this.addButton();
+        break;
+      case 'addDropdown':
+        this.addDropdown();
+        break;
+      case 'addTable':
+        this.addTable();
+        break;
+    }
   }
 }

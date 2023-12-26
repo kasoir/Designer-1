@@ -8,8 +8,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FormsModule } from '@angular/forms';
-import { PredefinedElements } from './dummy-data';
 import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -24,6 +24,7 @@ import { PropertiesBarComponent } from './properties-bar/properties-bar.componen
     BrowserAnimationsModule,
     DragDropModule,
     FormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

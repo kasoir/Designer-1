@@ -8,7 +8,14 @@
       <div #frame class="content resizable movable" [ngStyle]="{'background-color': frameColor}">
         <router-outlet></router-outlet>
       </div>
-      <button class="lock-button" (click)="toggleLock()">{{isLocked ? 'Unlock Frame' : 'Lock Frame'}}</button>
+      <button class="lock-button" (click)="toggleLock()">
+        <i [ngClass]="{
+          'fa fa-solid fa-lock': isLocked === true
+        }"  aria-hidden="true"></i>
+        <i [ngClass]="{
+          'fa fa-solid fa-unlock': isLocked === false
+        }"  aria-hidden="true"></i>
+      </button>
       <input type="color" [(ngModel)]="frameColor" class="color-picker">
     </div>
   </div>
