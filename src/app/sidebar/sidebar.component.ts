@@ -1,6 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { PredefinedElements } from '../dummy-data';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-sidebar',
@@ -10,15 +11,16 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 export class SidebarComponent implements OnInit {
 
   public items: SafeHtml[] = [];
-
+  display = true;
   selectedElement!: HTMLElement;
+  trush: any[] = [];
 
   options = [
-    {key: 'addLabel' , value: 'Add Label'}, 
-    {key: 'addText' , value: 'Add Text'} , 
-    {key: 'addButton', value: 'Add Button'} ,
-    {key: 'addList', value: 'Add List'} , 
-    {key: 'addTable', value: 'Add Table'}];
+    {code: 'addLabel' , name: 'Add Label'}, 
+    {code: 'addText' , name: 'Add Text'} , 
+    {code: 'addButton', name: 'Add Button'} ,
+    {code: 'addList', name: 'Add List'} , 
+    {code: 'addTable', name: 'Add Table'}];
 
   position = `
     position: absolute;
@@ -120,7 +122,8 @@ export class SidebarComponent implements OnInit {
   }
 
   handleSelect(event: any) {
-    switch(event.target.value) {
+    const value = event.value;
+    switch(value.code) {
       case 'addLabel':
         this.addLabel();
         break;
@@ -137,5 +140,30 @@ export class SidebarComponent implements OnInit {
         this.addTable();
         break;
     }
+  }
+  
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event.container.element.nativeElement.innerHTML);
+    
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  }
+  dragStart(event: any, item: any) {
+    event.dataTransfer.setData('text', item);
+  }
+  
+  drop1(event: any) {
+    const item = event.dataTransfer.getData('text');
+    
+  }
+
+  removeItem(item: any, list: any[]) {
+    list.splice(list.indexOf(item), 1);
   }
 }
