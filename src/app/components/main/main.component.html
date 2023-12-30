@@ -1,0 +1,17 @@
+<div>
+    <div class="container">
+      <app-navbar></app-navbar>
+      <div class="sidebar front">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="frame-container">
+        <div #frame class="content resizable movable" [ngStyle]="{'background-color': frameColor}">
+          <router-outlet></router-outlet>
+        </div>
+        <button pButton class="lock-button" type="button" (click)="toggleLock()">
+          <i class="pi" [ngClass]="{'pi-lock': isLocked, 'pi-unlock': !isLocked}"></i>
+        </button>
+        <p-colorPicker class="color-picker" [(ngModel)]="frameColor"></p-colorPicker>
+      </div>
+    </div>
+  </div>
