@@ -1,10 +1,18 @@
-<div class="sidebar">
-  <select (change)="handleSelect($event)">
-    <option *ngFor="let option of options" [value]="option.key">{{option.value}}</option>
-  </select>
-</div>  
-<div *ngFor="let item of items">
+<p-sidebar [(visible)]="display" styleClass="p-sidebar-active p-sidebar-left position" [showCloseIcon]="false"
+  [closeOnEscape]="false" [dismissible]="false" [modal]="false" [style]="{width:'13%', height:'100%',position:'fixed','z-index':'1'}">
+  <div class="p-sidebar-active">
+    <p-dropdown (onChange)="handleSelect($event)" [options]="options" optionLabel="name" [showClear]="true"
+      placeholder="Select a Option"></p-dropdown>
+  </div>
+  <div style="position: fixed; bottom:10px; left: 10px;">
+    <span>
+      POWERED BY KASOIR ABBAS
+    </span>
+  </div>
+  </p-sidebar>
+  <div *ngFor="let item of items">
     <div (click)="selectElement($event)" cdkDrag [innerHTML]="item"></div>
-</div>
+  </div>
 
-<app-properties-bar class="properties-bar" *ngIf="selectedElement" [element]="selectedElement"></app-properties-bar>
+<app-properties-bar class="properties-bar" *ngIf="selectedElement" [element]="selectedElement"
+  [display]="true"></app-properties-bar>

@@ -8,7 +8,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'designer';
-  frameColor = 'white';
+  frameColor = '#ffffff';
   isDown = false;
   offset = [0, 0];
   position = [0, 0];

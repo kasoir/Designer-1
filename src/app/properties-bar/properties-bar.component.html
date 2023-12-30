@@ -1,18 +1,68 @@
-<div>
-    <div class="gride" *ngIf="element && showSidebar">
-        <p>Tag name: {{element.tagName}}</p>
-        <label>font size: <input [(ngModel)]="fontSize" (change)="setStyle()"></label>
-        <label>border size: <input [(ngModel)]="borderSize" (change)="setStyle()"></label>
-        <label>border color: <input [(ngModel)]="borderColor" (change)="setStyle()"></label>
-        <label>border style: <input [(ngModel)]="borderStyle" (change)="setStyle()"></label>
-        <label>font color: <input [(ngModel)]="fontColor" (change)="setStyle()"></label>
-        <label>background color: <input [(ngModel)]="backgroundColor" (change)="setStyle()"></label>
-        <label>Position Type: <input [(ngModel)]="position" (change)="setStyle()"></label>
-        <label>Top: <input [(ngModel)]="top" (change)="setStyle()"></label>
-        <label>Left: <input [(ngModel)]="left" (change)="setStyle()"></label>
-        <label>transform: <input [(ngModel)]="transform" (change)="setStyle()"></label>
-        <!-- Display other properties and controls as needed -->
-    </div>
+<div class="card flex justify-content-center">
+    <p-sidebar appendTo="body" [(visible)]="display" styleClass="p-sidebar-active p-sidebar-right"
+        [showCloseIcon]="false" [closeOnEscape]="false" [modal]="false" position="right"
+        [style]="{width:'13%', height:'100%'}">
+        <ng-template pTemplate="headless">
+                    <div pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown"
+                        leaveToClass="hidden" leaveActiveClass="slideup"
+                        class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer p-ripple">
+                        <span class="font-medium">PROPERTIES</span>
+                    </div>
+                <div>
+                    <label>font size: </label>
+                    <input [(ngModel)]="fontSize" (change)="setStyle()">
+                </div>
 
-    <button (click)="toggleSidebar()">Hide Sidebar</button>
+                <div>
+                    <label>border size: </label>
+                    <input [(ngModel)]="borderSize" (change)="setStyle()">
+                </div>
+
+
+                <div>
+                    <label>border color: </label>
+                    <input [(ngModel)]="borderColor" (change)="setStyle()">
+                </div>
+
+
+                <div>
+                    <label>border style: </label>
+                    <input [(ngModel)]="borderStyle" (change)="setStyle()">
+                </div>
+
+
+                <div>
+                    <label>font color: </label>
+                    <input [(ngModel)]="fontColor" (change)="setStyle()">
+                </div>
+
+
+                <div>
+                    <label>background color: </label>
+                    <input [(ngModel)]="backgroundColor" (change)="setStyle()">
+                </div>
+
+
+                <div>
+                    <label>Label: </label>
+                    <input [(ngModel)]="label" (change)="setStyle()">
+
+                </div>
+
+                <div>
+                    <label>Width: </label>
+                    <input [(ngModel)]="width" (change)="setStyle()">
+
+                </div>
+
+                <div>
+                    <label>Height: </label>
+                    <input [(ngModel)]="height" (change)="setStyle()">
+                </div>
+
+                <div>
+                    <p-button type="text" (click)="display = false" label="Hide"></p-button>
+                </div>
+        </ng-template>
+    </p-sidebar>
 </div>

@@ -1,6 +1,6 @@
 <div>
-  <app-navbar></app-navbar>
   <div class="container">
+    <app-navbar></app-navbar>
     <div class="sidebar front">
       <app-sidebar></app-sidebar>
     </div>
@@ -8,15 +8,10 @@
       <div #frame class="content resizable movable" [ngStyle]="{'background-color': frameColor}">
         <router-outlet></router-outlet>
       </div>
-      <button class="lock-button" (click)="toggleLock()">
-        <i [ngClass]="{
-          'fa fa-solid fa-lock': isLocked === true
-        }"  aria-hidden="true"></i>
-        <i [ngClass]="{
-          'fa fa-solid fa-unlock': isLocked === false
-        }"  aria-hidden="true"></i>
+      <button pButton class="lock-button" type="button" (click)="toggleLock()">
+        <i class="pi" [ngClass]="{'pi-lock': isLocked, 'pi-unlock': !isLocked}"></i>
       </button>
-      <input type="color" [(ngModel)]="frameColor" class="color-picker">
+      <p-colorPicker class="color-picker" [(ngModel)]="frameColor"></p-colorPicker>
     </div>
   </div>
 </div>
