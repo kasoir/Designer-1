@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PredefinedElements } from '../dummy-data';
+import { PredefinedElements } from '../../dummy-data';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
