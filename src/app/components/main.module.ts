@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -15,11 +12,17 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { SidebarModule } from 'primeng/sidebar';
 import { ToolbarModule } from 'primeng/toolbar';
-import { AppRoutingModule } from '../app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
+const routes: Routes = [
+  { path: '', component: MainComponent},
+  { path: 'log-in', loadChildren: () => import('./login-signup/login-signup.module').then(m => m.LoginSignupModule) },
+];
 
 
 @NgModule({
@@ -30,9 +33,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     PropertiesBarComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
+    CommonModule,
+    HttpClientModule,
+    RouterModule.forChild( routes ),
     DragDropModule,
     FormsModule,
     FontAwesomeModule,
@@ -46,6 +49,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     CardModule,
     InputTextModule,
   ],
-  exports: [ MainComponent ]
+  exports: [ RouterModule, MainComponent ]
 })
 export class MainModule { }

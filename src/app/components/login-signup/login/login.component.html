@@ -1,0 +1,23 @@
+<p-card>
+    <div class="grid flex vertical-container">
+        <div class="col-5">
+            <div class="grid m-1">
+                <label class="col-5">Email</label>
+                <input pInputText id="email" type="text" class="col-7" [(ngModel)]="email"/>
+            </div>
+            <div class="grid m-1">
+                <label class="col-5 ">Password</label>
+                <input pInputText id="password" type="password" class="col-7" [(ngModel)]="password"/>
+            </div>
+            <div class="grid" >
+                <p-button label="Login" icon="pi pi-user" class="col-12 m-5" (click)="login()"></p-button>
+            </div>
+        </div>
+        <div class="col-2 m-0 p-0">
+            <p-divider layout="vertical"><b><b>OR</b></b></p-divider>
+        </div>
+        <div class="col-5">
+            <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success w-10rem"></p-button>
+        </div>
+    </div>
+</p-card>
