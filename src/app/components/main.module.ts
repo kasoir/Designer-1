@@ -18,10 +18,11 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import {AvatarGroupModule} from 'primeng/avatargroup';
 
 const routes: Routes = [
   { path: '', component: MainComponent},
-  { path: 'log-in', loadChildren: () => import('./login-signup/login-signup.module').then(m => m.LoginSignupModule) },
+  { path: 'auth', loadChildren: () => import('./login-signup/login-signup.module').then(m => m.LoginSignupModule) },
 ];
 
 
@@ -45,6 +46,7 @@ const routes: Routes = [
     ColorPickerModule,
     ToolbarModule,
     AvatarModule,
+    AvatarGroupModule,
     RippleModule,
     CardModule,
     InputTextModule,

@@ -1,4 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +9,19 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    if ( !(await this.authService.verifyUserToken()) ) {
+			this.router.navigateByUrl( '/auth/login' );
+		}
+    if ( this.authService.isAttacked ) {
+			this.authService.logoutUser();
+		}
+		this.authService.isAttacked = true;
   }
 
   frameColor = '#ffffff';
