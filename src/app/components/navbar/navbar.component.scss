@@ -1,18 +1,22 @@
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: rgb(116, 138, 139);
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-  }
-  
-  .navbar .logo {
-    /* Add your logo styles here */
-  }
-  
-  .navbar .profile {
-    /* Add your profile/login styles here */
-  }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgb(116, 138, 139);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.avatar {
+  position: fixed;
+  top: 2%;
+  left: 1%
+}
+
+.button {
+  position: fixed;
+  top:2%; 
+  right:1% ;
+}

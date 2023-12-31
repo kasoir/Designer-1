@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/auth.service';
 
 @Injectable({
@@ -6,9 +7,25 @@ import { AuthService } from 'src/app/auth.service';
 })
 export class LoginService {
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    ) { }
 
   login = async (email: string, password: string) => {
-    await this.authService.login(email, password)
+    const isSuccessUser = await this.authService.login(email, password);
+    if ( isSuccessUser ) {
+      console.log( isSuccessUser );
+      this.redirectOnSuccess();
+    }
   }
+
+  private redirectOnSuccess = async () => {
+		if ( !this.authService.redirectUrl ) {
+			this.router.navigateByUrl( '/' );
+		} else {
+			this.router.navigateByUrl( this.authService.redirectUrl );
+			this.authService.redirectUrl = null;
+		}
+	}
 }

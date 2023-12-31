@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { defaultJWTPayload } from 'models/jwtpayload.model';
+import { AuthService } from 'src/app/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  public UserDisplayName: string = '';
+  constructor(
+    private authService: AuthService,
+  ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.UserDisplayName = this.authService.user.firstName[0] + this.authService.user.lastName[0]
   }
-
+  
+  async logout() {
+    await this.authService.logoutUser();
+  }
 }

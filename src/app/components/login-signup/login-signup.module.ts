@@ -12,10 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  {path: '', children: [
-    { path: '', component: LoginComponent },
-    { path: 'sign-up', component: SignupComponent },
-  ]}
+  // {path: '', children: [
+  { path: '', redirectTo: 'login' },
+  { path: 'login', component: LoginComponent },
+  { path: 'sign-up', component: SignupComponent },
+  // ]}
 ];
 @NgModule({
   declarations: [
