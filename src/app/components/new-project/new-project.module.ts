@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AvatarModule } from 'primeng/avatar';
@@ -11,32 +10,29 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { SidebarModule } from 'primeng/sidebar';
-import { ToolbarModule } from 'primeng/toolbar';
-import { NavbarComponent } from './navbar/navbar.component';
-import { PropertiesBarComponent } from './properties-bar/properties-bar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import {AvatarGroupModule} from 'primeng/avatargroup';
+import { ContainerFrameComponent } from '../container-frame/container-frame.component';
+import { PropertiesBarComponent } from '../properties-bar/properties-bar.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
+import { NewProjectComponent } from './new-project.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent},
-  { path: 'auth', loadChildren: () => import('./login-signup/login-signup.module').then(m => m.LoginSignupModule) },
+  { path: '', component: NewProjectComponent },
 ];
-
 
 @NgModule({
   declarations: [ 
-    MainComponent, 
-    NavbarComponent,
     SidebarComponent,
-    PropertiesBarComponent
+    PropertiesBarComponent,
+    ContainerFrameComponent,
+    NewProjectComponent,
   ],
   imports: [
     CommonModule,
     HttpClientModule,
-    RouterModule.forChild( routes ),
+    RouterModule.forChild(routes),
     DragDropModule,
     FormsModule,
     FontAwesomeModule,
@@ -44,13 +40,10 @@ const routes: Routes = [
     SidebarModule,
     ButtonModule,
     ColorPickerModule,
-    ToolbarModule,
-    AvatarModule,
-    AvatarGroupModule,
     RippleModule,
     CardModule,
     InputTextModule,
   ],
-  exports: [ RouterModule, MainComponent ]
+  exports: [ RouterModule ]
 })
-export class MainModule { }
+export class NewProjectModule { }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as CryptoJS from 'crypto-js';
 import { JWTPayload, defaultJWTPayload } from 'models/jwtpayload.model';
-import { jwtTokenConfig } from 'settings/settings';
+import { apiURL, jwtTokenConfig } from 'settings/settings';
 import { jwtDecode } from 'jwt-decode';
 import { BehaviorSubject, EMPTY } from 'rxjs';
 import { Router } from '@angular/router';
@@ -17,8 +17,6 @@ interface TokenResponse {
 })
 
 export class AuthService {
-
-    private apiUrl = 'http://localhost:3000';
     public currentUserData: BehaviorSubject<JWTPayload> = new BehaviorSubject(defaultJWTPayload);
     public user: JWTPayload = defaultJWTPayload;
     public isActive = new BehaviorSubject(false);
@@ -36,7 +34,7 @@ export class AuthService {
             if (!email || !password) return null;
             const hashedPassword = CryptoJS.HmacSHA256(password, email).toString();
             const body = { email: email, password: hashedPassword };
-            const tokenResponse = await this.http.post<TokenResponse>(`${this.apiUrl}/login`, body).toPromise();
+            const tokenResponse = await this.http.post<TokenResponse>(`${apiURL}/login`, body).toPromise();
             const decodedToken = decodeToken(tokenResponse.data.token || '');
             localStorage.setItem(jwtTokenConfig.storagePathUI, JSON.stringify(decodedToken));
             window.removeEventListener('storage', () => { });
@@ -72,7 +70,7 @@ export class AuthService {
 
         const hashedPassword = CryptoJS.HmacSHA256(user.password, user.email).toString();
         user.password = hashedPassword;
-        const jwt = await this.http.post(`${this.apiUrl}/signup`, user).toPromise();
+        const jwt = await this.http.post(`${apiURL}/signup`, user).toPromise();
         console.log(jwt)
         return jwt;
     }
@@ -96,7 +94,7 @@ export class AuthService {
             if (locallyStoredUser) {
                 const userData = JSON.parse(locallyStoredUser);
                 if (userData) {
-                    this.router.navigate(['/']);
+                    this.router.navigate(['home']);
                     this.currentUserData.next(userData);
                     this.isActive.next(true);
                     this.user = userData;

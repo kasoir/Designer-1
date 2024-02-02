@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   async ngOnInit() {
     if ( await this.authService.verifyUserToken() ) {
-			this.router.navigateByUrl( '/' );
+			this.router.navigateByUrl( 'home' );
 		}
     if ( this.authService.isAttacked ) {
 			this.authService.logoutUser();

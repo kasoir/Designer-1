@@ -1,7 +1,5 @@
-<p-sidebar [(visible)]="display" styleClass="w-14rem h-full position fixed z-1" [showCloseIcon]="false"
-  [closeOnEscape]="false" [dismissible]="false" [modal]="false"
-  [style]="{top:'9%'}"
->
+<p-sidebar [(visible)]="display" styleClass="w-14rem h-auto position fixed z-1" [showCloseIcon]="true"
+  [closeOnEscape]="true" [dismissible]="true" [modal]="false" [style]="{top:'11%', bottom: '40%'}">
   <div>
     <p-dropdown (onChange)="handleSelect($event)" [options]="options" optionLabel="name" [showClear]="true"
       placeholder="Select a Option"></p-dropdown>
@@ -12,9 +10,11 @@
     </span>
   </div>
 </p-sidebar>
+<button (click)="display=true"
+  class="p-link inline-flex justify-content-start align-items-start text-black h-1rem w-2rem fixed" size="large" [style]="{top: '10%'}"><i
+    class="pi pi-angle-double-right" style="font-size: 2rem"></i></button>
 <div *ngFor="let item of items">
   <div (click)="selectElement($event)" cdkDrag [innerHTML]="item"></div>
 </div>
-
 <app-properties-bar class="properties-bar" *ngIf="selectedElement" [element]="selectedElement"
   [display]="true"></app-properties-bar>

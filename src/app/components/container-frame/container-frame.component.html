@@ -1,0 +1,8 @@
+<div class="container">
+    <div #frame class="content resizable movable" [ngStyle]="{'background-color': frameColor}">
+    </div>
+    <button pButton class="lock-button" type="button" (click)="toggleLock()">
+        <i class="pi" [ngClass]="{'pi-lock': isLocked, 'pi-unlock': !isLocked}"></i>
+    </button>
+    <p-colorPicker class="color-picker" [(ngModel)]="frameColor"></p-colorPicker>
+</div>

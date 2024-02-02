@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 10%;
+    position: sticky;
+    top: 0;
+    display: inline;
+    z-index: 100;
+  }
+  
+  .lock-button {
+    position: relative;
+    top: 18%;
+    left: 14.5%;
+  }
+  
+  .color-picker {
+    position: relative;
+    top: 18%;
+    left: 14.5%;
+  }
+  
+  .content {
+    width: 90%;
+    border: 1px solid black;
+    min-height: 500px; 
+    background-color: white;
+  }
+  
+  .resizable {
+    resize: both;
+    overflow: auto;
+    width: 60%;
+    height: 60%;
+  }
+  
+  .movable {
+    position: relative;
+    cursor: move;
+    z-index: 100;
+    top: 19%;
+    left: 17.5%;
+  }
+  .front {
+    position: absolute;
+      z-index: 10000;
+  }
