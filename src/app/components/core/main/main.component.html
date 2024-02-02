@@ -1,0 +1,13 @@
+<div id="main-wrapper-id">
+  <div class="custom-navbar-wrapper">
+    <div class="fixed-top">
+      <app-navbar>
+      </app-navbar>
+    </div>
+  </div>
+
+  <div #container class="content-main" [@routerTransition]="getAnimationState(outlet)" [style]="{overflow: 'auto'}">
+    <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+
+</div>

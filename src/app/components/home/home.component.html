@@ -1,0 +1,13 @@
+<div class="card">
+    <p-carousel [value]="news" [numVisible]="1" [numScroll]="1" [circular]="true"
+        [responsiveOptions]="responsiveOptions" [autoplayInterval]="8000" [showNavigators]= "true">
+        <ng-template let-new pTemplate="item">
+            <div class="border-1 surface-border border-round m-2 text-center py-1 px-3">
+                <div>
+                    <h4 class="mb-1">{{ new.title }}</h4>
+                    <h6 class="mt-0 mb-3">{{ new.text }}</h6>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

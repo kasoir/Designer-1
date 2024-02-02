@@ -1,27 +1,15 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-container-frame',
+  templateUrl: './container-frame.component.html',
+  styleUrls: ['./container-frame.component.scss']
 })
-export class MainComponent implements OnInit {
+export class ContainerFrameComponent implements OnInit {
 
-  constructor(
-    private authService: AuthService,
-    private router: Router,
-  ) { }
+  constructor() { }
 
-  async ngOnInit() {
-    if ( !(await this.authService.verifyUserToken()) ) {
-			this.router.navigateByUrl( '/auth/login' );
-		}
-    if ( this.authService.isAttacked ) {
-			this.authService.logoutUser();
-		}
-		this.authService.isAttacked = true;
+  ngOnInit(): void {
   }
 
   frameColor = '#ffffff';
@@ -62,9 +50,4 @@ export class MainComponent implements OnInit {
     this.isLocked = !this.isLocked;
   }
 
-  selectedElement!: HTMLElement;
-
-  selectElement(event: MouseEvent) {
-    this.selectedElement = event.target as HTMLElement;
-  }
 }

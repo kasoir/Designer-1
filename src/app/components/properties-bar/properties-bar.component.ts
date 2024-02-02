@@ -37,10 +37,10 @@ export class PropertiesBarComponent implements OnInit, OnChanges {
   getStyle() {
     this.display = true;
     this.fontSize = this.element.style.fontSize;
-    this.fontColor = this.element.style.color;
-    this.backgroundColor = this.element.style.backgroundColor;
+    this.fontColor = this.rgbToHex(this.element.style.color);
+    this.backgroundColor = this.rgbToHex(this.element.style.backgroundColor);
     this.borderSize = this.element.style.borderWidth;
-    this.borderColor = this.element.style.borderColor;
+    this.borderColor = this.rgbToHex(this.element.style.borderColor);
     this.borderStyle = this.element.style.borderStyle;
     this.label = this.element.innerHTML;
     this.width = this.element.style.width;
@@ -69,5 +69,15 @@ export class PropertiesBarComponent implements OnInit, OnChanges {
     ${this.fontColor ? ' color: ' + this.fontColor + ';' : ''} 
     ${this.backgroundColor ? ' background-color: ' + this.backgroundColor + ';' : ''} 
     ${this.borderSize ? ' border: ' + this.borderSize + ' ' + this.borderStyle + ' ' + this.borderColor + ';' : ''}`
+  }
+
+  rgbToHex (color: string) {
+    let match = color.match(/\d+/g);
+    if(match) {
+      let [r, g, b] = match.map(Number);
+      return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    } else {
+      return '';
+    }
   }
 }

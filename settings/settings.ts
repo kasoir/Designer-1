@@ -19,3 +19,8 @@ export const settings = {
 export const jwtTokenConfig = {
 	storagePathUI: 'currentUserData',
 };
+
+
+export const urls = {
+	authAPI: `${apiURL}/auth`,
+}

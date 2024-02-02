@@ -1,68 +1,75 @@
 <div class="card flex justify-content-center">
-    <p-sidebar appendTo="body" [(visible)]="display" styleClass="w-14rem h-full position fixed z-1"
+    <p-sidebar appendTo="body" [(visible)]="display" styleClass="w-15rem h-full position fixed z-1"
         [showCloseIcon]="false" [closeOnEscape]="false" [modal]="false" position="right"
-        [style]="{top:'9%'}">
+        [style]="{top:'11%', bottom: '5%'}">
         <ng-template pTemplate="headless">
-                    <div pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown"
-                        leaveToClass="hidden" leaveActiveClass="slideup"
-                        class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer p-ripple">
-                        <span class="font-medium">PROPERTIES</span>
-                    </div>
+            <div pRipple pStyleClass="@next" enterClass="hidden" enterActiveClass="slidedown" leaveToClass="hidden"
+                leaveActiveClass="slideup"
+                class="p-3 flex align-items-center justify-content-between text-600 cursor-pointer p-ripple">
+                <span class="font-medium">PROPERTIES</span>
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>font size: </label>
-                    <input [(ngModel)]="fontSize" (change)="setStyle()">
+                    <label class="col-7">font size: </label>
+                    <input class="col-5" style="float: right;" [(ngModel)]="fontSize" (change)="setStyle()">
                 </div>
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>border size: </label>
-                    <input [(ngModel)]="borderSize" (change)="setStyle()">
+                    <label class="col-7 ">border size: </label>
+                    <input class="col-5" style="float: right;" [(ngModel)]="borderSize" (change)="setStyle()">
                 </div>
-
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>border color: </label>
-                    <input [(ngModel)]="borderColor" (change)="setStyle()">
+                    <label class="col-7">border color: </label>
+                    <p-colorPicker class="col-5 color-picker"[(ngModel)]="borderColor"
+                        (onChange)="setStyle()"></p-colorPicker>
                 </div>
-
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>border style: </label>
-                    <input [(ngModel)]="borderStyle" (change)="setStyle()">
+                    <label class="col-7">border style: </label>
+                    <input class="col-5" style="float: right;" [(ngModel)]="borderStyle" (change)="setStyle()">
                 </div>
-
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>font color: </label>
-                    <input [(ngModel)]="fontColor" (change)="setStyle()">
+                    <label class="col-7">font color: </label>
+                    <p-colorPicker class="col-5 color-picker"  [(ngModel)]="fontColor"
+                        (onChange)="setStyle()"></p-colorPicker>
                 </div>
-
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>background color: </label>
-                    <input [(ngModel)]="backgroundColor" (change)="setStyle()">
+                    <label class="col-7">background color: </label>
+                    <p-colorPicker class="col-5 color-picker" [(ngModel)]="backgroundColor"
+                        (onChange)="setStyle()"></p-colorPicker>
                 </div>
-
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>Label: </label>
-                    <input [(ngModel)]="label" (change)="setStyle()">
+                    <label class="col-7">Label: </label>
+                    <input class="col-5" style="float: right;" [(ngModel)]="label" (change)="setStyle()">
 
                 </div>
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>Width: </label>
-                    <input [(ngModel)]="width" (change)="setStyle()">
+                    <label class="col-7">Width: </label>
+                    <input class="col-5" style="float: right;" [(ngModel)]="width" (change)="setStyle()">
 
                 </div>
-
+            </div>
+            <div class="grid m-1">
                 <div>
-                    <label>Height: </label>
-                    <input [(ngModel)]="height" (change)="setStyle()">
+                    <label class="col-7">Height: </label>
+                    <input class="col-5" style="float: right;" [(ngModel)]="height" (change)="setStyle()">
                 </div>
-
-                <div>
-                    <p-button type="text" (click)="display = false" label="Hide"></p-button>
-                </div>
+            </div>
+            <div>
+                <p-button type="text" (click)="display = false" label="Hide"></p-button>
+            </div>
         </ng-template>
     </p-sidebar>
 </div>

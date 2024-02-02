@@ -22,7 +22,7 @@ export class LoginService {
 
   private redirectOnSuccess = async () => {
 		if ( !this.authService.redirectUrl ) {
-			this.router.navigateByUrl( '/' );
+			this.router.navigateByUrl( 'home' );
 		} else {
 			this.router.navigateByUrl( this.authService.redirectUrl );
 			this.authService.redirectUrl = null;
